@@ -25,7 +25,9 @@ export default {
   },
   Mutation: {
     login: async (_, { email }, { dataSources }) => {
+      console.log(email);
       const user = await dataSources.userAPI.findOrCreateUser({ email });
+      console.log(user);
       if (user) {
         user.token = Buffer.from(email).toString("base64");
         return user;
